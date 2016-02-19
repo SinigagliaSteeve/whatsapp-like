@@ -1,0 +1,14 @@
+[
+  {
+    "_id": "56bda0a65601a2bd587dccce",
+    "name": "Repas à la Cigale",
+    "description": "Discussion autour du repas de fin d'année",
+    "creationDate": "Wed Jan 20 2016 05:06:10 GMT+0100 (CET)"
+  },
+  {
+    "_id": "56bda0a69cef8e037dcdb167",
+    "name": "Match de Ligue 1 - Bordeaux vs. Nantes",
+    "description": "Organisation de la rencontre",
+    "creationDate": "Wed Jan 20 2016 16:59:09 GMT+0100 (CET)"
+  }
+]
