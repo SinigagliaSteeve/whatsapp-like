@@ -1,11 +1,17 @@
 <ion-view view-title="Contacts">
+  <ion-header-bar class="bar-light bar-subheader">
+
+      <label class="bar bar-header item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Recherche" ng-model="model.queryContact"/>
+      </label>
+  </ion-header-bar>
   <ion-content>
-      <input ng-model="model.queryContact"/>
-      <ion-list>
-        <ion-item class="item-remove-animate item-avatar item-icon-right"
+      <ion-list class="has-header">
+        <ion-item class="item-remove-animate item-icon-right"
             ng-repeat="contact in contacts | orderBy: 'firstName' | filter:searchContact"
             type="item-text-wrap">
-          <h2>{{contact.firstName}} {{contact.lastName | uppercase}}</h2>
+          <h2>{{contact.firstName}} {{contact.lastName}}</h2>
         </ion-item>
       </ion-list>
   </ion-content>
