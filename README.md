@@ -46,5 +46,5 @@ grunt serve
 # Application structure
 
 - /app : the application
-- /wwww : generated application
+- /www : generated application
 - /node_modules

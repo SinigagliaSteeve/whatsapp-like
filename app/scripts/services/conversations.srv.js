@@ -1,24 +1,6 @@
 (function () {
     'use strict';
 
-    // Contacts service
-    function ContactsSrv($http, $q) {
-        var contacts;
-
-        this.findAll = function() {
-            if(!contacts) {
-                return $http.get('data/contacts.json').then(function (response) {
-                    contacts = response.data;
-                    return contacts;
-                }, function (response) {
-                    console.log(`Erreur contacts.json : ${response.status}`);
-                });
-            } else {
-                return $q.resolve(contacts);
-            }
-        };
-    }
-
     // Conversations service
     function ConversationsSrv($http, $q) {
         var conversations;
@@ -74,12 +56,10 @@
         // };
     }
 
-    // Define angular module
-    angular.module('whatsapp.services', [])
-    .service('ConversationsSrv', ConversationsSrv)
-    .service('ContactsSrv', ContactsSrv);
 
-    // Injection
-    ContactsSrv.$inject = ['$http', '$q'];
+    angular.module('whatsapp.services')
+        .service('ConversationsSrv', ConversationsSrv);
+
+
     ConversationsSrv.$inject = ['$http', '$q'];
 })();
