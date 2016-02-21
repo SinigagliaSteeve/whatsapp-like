@@ -10,7 +10,7 @@
          * @return the id if the entity exists, otherwise -1
          */
         function getConversationIndexFromId(conversations, id) {
-            for (let i = 0; i < conversations.length; i++) {
+            for (var i = 0; i < conversations.length; i++) {
                 if(conversations[i]._id === id) {
                     return i;
                 }

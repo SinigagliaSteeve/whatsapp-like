@@ -1,9 +1,11 @@
 <ion-view view-title="Contacts">
   <ion-content>
+      <input ng-model="model.queryContact"/>
       <ion-list>
-        <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contact in contacts" type="item-text-wrap">
+        <ion-item class="item-remove-animate item-avatar item-icon-right"
+            ng-repeat="contact in contacts | orderBy: 'firstName' | filter:searchContact"
+            type="item-text-wrap">
           <h2>{{contact.firstName}} {{contact.lastName | uppercase}}</h2>
-          <p>{{contact.email}}</p>
         </ion-item>
       </ion-list>
   </ion-content>
