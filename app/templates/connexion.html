@@ -1,0 +1,25 @@
+<ion-view view-title="Connexion">
+
+  <ion-content>
+    <div class="list card">
+
+        <div class="item">
+            <input ng-model="email" type="text" name="email" placeholder="Email" class="item"/>
+        </div>
+
+        <div class="item">
+            <input ng-model="password" type="password" name="password" placeholder="Mot de passe" class="item"/>
+        </div>
+
+    </div>
+
+    <div class="text-center">
+        <button ng-click="connexionClick(email, password)" class="button button-block button-stable">
+          Se connecter
+        </button>
+        <a href="#/inscription">Créer un compte</a>
+    </div>
+
+
+  </ion-content>
+</ion-view>

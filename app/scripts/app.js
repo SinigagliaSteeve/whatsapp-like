@@ -8,9 +8,10 @@
     // the 2nd parameter is an array of 'requires'
     // 'starter.services' is found in services.js
     // 'starter.controllers' is found in controllers.js
-    angular.module('whatsapp', ['ionic', 'whatsapp.controllers', 'whatsapp.services'])
+    angular.module('whatsapp', ['ionic', 'ngGuid', 'whatsapp.controllers', 'whatsapp.services'])
 
-    .run(function($ionicPlatform) {
+    .run(function($ionicPlatform, $rootScope, $location, $state) {
+      $rootScope.user = null;
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -23,6 +24,20 @@
           // org.apache.cordova.statusbar required
           StatusBar.styleDefault();
         }
+
+        // Authentication verification
+        $rootScope.$on('$ionicView.beforeEnter', function(e, view) {
+            // si on est sur la page d'inscription ou de connexion alors on ne fait rien
+            if(view.stateId === 'inscription' || view.stateId === 'connexion') {
+                return;
+            }
+            // now, redirect only not authenticated
+            if($rootScope.user === null) {
+                e.preventDefault();
+                $state.go('connexion');
+            }
+        });
+
       });
     })
 
@@ -36,10 +51,22 @@
 
       // setup an abstract state for the tabs directive
         .state('tab', {
-        url: '/tab',
-        abstract: true,
-        templateUrl: 'templates/tabs.html'
-      })
+            url: '/tab',
+            abstract: true,
+            templateUrl: 'templates/tabs.html'
+        })
+
+        .state('connexion', {
+            url: '/connexion',
+            templateUrl: 'templates/connexion.html',
+            controller: 'ConnexionCtrl'
+        })
+
+        .state('inscription', {
+            url: '/inscription',
+            templateUrl: 'templates/inscription.html',
+            controller: 'InscriptionCtrl'
+        })
 
       // Each tab has its own nav history stack:
       .state('tab.contacts', {
@@ -64,7 +91,7 @@
         .state('tab.conversation-detail', {
           url: '/conversations/:conversationId',
           views: {
-            'tab-conversations': {
+              'tab-conversations': {
               templateUrl: 'templates/conversation-detail.html',
               controller: 'ConversationDetailCtrl'
             }

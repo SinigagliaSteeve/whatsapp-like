@@ -9,11 +9,10 @@
         });
 
         // Custom filter which matches firstName and lastName based on the query
-        $scope.searchContact = function(contact, index, contacts) {
-            if($scope.model.queryContact != undefined) {
+        $scope.searchContact = function(contact) {
+            if($scope.model.queryContact !== undefined) {
                 var query = $scope.model.queryContact.toLowerCase();
-                return contact.firstName.toLowerCase().indexOf(query) > -1
-                    || contact.lastName.toLowerCase().indexOf(query) > -1
+                return contact.firstName.toLowerCase().indexOf(query) > -1 || contact.lastName.toLowerCase().indexOf(query) > -1;
             } else {
                 return true;
             }
