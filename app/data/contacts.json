@@ -3,126 +3,147 @@
         "_id": "56bd9307c9771c9239e82508",
         "email": "shieldsroy@cinesanct.com",
         "firstName": "Sargent",
-        "lastName": "Myers"
+        "lastName": "Myers",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd930786cfb803c980c9e6",
         "email": "sargentmyers@cinesanct.com",
         "firstName": "Nieves",
-        "lastName": "Lopez"
+        "lastName": "Lopez",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd930771d3612d3e918a10",
         "email": "nieveslopez@cinesanct.com",
         "firstName": "Rivera",
-        "lastName": "Delacruz"
+        "lastName": "Delacruz",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd93074fd2efd2137da12f",
         "email": "riveradelacruz@cinesanct.com",
         "firstName": "Wilma",
-        "lastName": "Sellers"
+        "lastName": "Sellers",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd930742fcf2cd075e4a4c",
         "email": "wilmasellers@cinesanct.com",
         "firstName": "Harriet",
-        "lastName": "Moore"
+        "lastName": "Moore",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd9307c37f91af9d26d02c",
         "email": "harrietmoore@cinesanct.com",
         "firstName": "Roseann",
-        "lastName": "Serrano"
+        "lastName": "Serrano",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd930724c77478941f4d9f",
         "email": "roseannserrano@cinesanct.com",
         "firstName": "Simone",
-        "lastName": "Kelley"
+        "lastName": "Kelley",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd9307f14d4409fa636723",
         "email": "simonekelley@cinesanct.com",
         "firstName": "Essie",
-        "lastName": "Lindsay"
+        "lastName": "Lindsay",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd930708d53c789c8d714d",
         "email": "essielindsay@cinesanct.com",
         "firstName": "Miller",
-        "lastName": "Michael"
+        "lastName": "Michael",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd930712a51ccd95b14247",
         "email": "millermichael@cinesanct.com",
         "firstName": "Leticia",
-        "lastName": "Brady"
+        "lastName": "Brady",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd93076a928bd52998b769",
         "email": "leticiabrady@cinesanct.com",
         "firstName": "Greene",
-        "lastName": "Hayden"
+        "lastName": "Hayden",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd930738a8e5402fa64df5",
         "email": "greenehayden@cinesanct.com",
         "firstName": "Head",
-        "lastName": "Oconnor"
+        "lastName": "Oconnor",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd93079a93eaeb07e19534",
         "email": "headoconnor@cinesanct.com",
         "firstName": "Miranda",
-        "lastName": "Miller"
+        "lastName": "Miller",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd9307068652943477a4e0",
         "email": "mirandamiller@cinesanct.com",
         "firstName": "Simon",
-        "lastName": "Long"
+        "lastName": "Long",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd9307f5097298c31079cb",
         "email": "simonlong@cinesanct.com",
         "firstName": "Kemp",
-        "lastName": "Benton"
+        "lastName": "Benton",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd9307dfe0d919e3016c23",
         "email": "kempbenton@cinesanct.com",
         "firstName": "Wong",
-        "lastName": "Bauer"
+        "lastName": "Bauer",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd930767e1cc86b8db484f",
         "email": "wongbauer@cinesanct.com",
         "firstName": "Naomi",
-        "lastName": "Booth"
+        "lastName": "Booth",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd93074e07054e3ca2e85a",
         "email": "naomibooth@cinesanct.com",
         "firstName": "Moses",
-        "lastName": "Francis"
+        "lastName": "Francis",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd9307f2c69529c0928e1d",
         "email": "mosesfrancis@cinesanct.com",
         "firstName": "Lucille",
-        "lastName": "Ratliff"
+        "lastName": "Ratliff",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd93074840d1059702614b",
         "email": "lucilleratliff@cinesanct.com",
         "firstName": "Lavonne",
-        "lastName": "Sampson"
+        "lastName": "Sampson",
+        "password": "whatsapp"
       },
       {
         "_id": "56bd93074840d1059772614b",
         "email": "gui.pouilloux@gmail.com",
         "firstName": "Guillaume",
-        "lastName": "Pouilloux"
+        "lastName": "Pouilloux",
+        "password": "whatsapp"
       }
     ]

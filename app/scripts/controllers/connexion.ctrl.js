@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    function ConnexionCtrl($scope, $rootScope, $location, ContactsSrv) {
+    function ConnexionCtrl($scope, $rootScope, $location, ContactsSrv, $ionicPopup) {
 
         // Initialize contacts
         ContactsSrv.findAll().then(function (contacts) {
@@ -10,11 +10,15 @@
 
         $scope.connexionClick = function(email, password) {
             // TODO check authentication via password
-            $rootScope.user = ContactsSrv.findBy('email', email);
-            if($rootScope !== null) {
+            $rootScope.user = ContactsSrv.checkAuthentication(email, password);
+            if($rootScope.user !== null) {
                 $location.path('/conversations');
             } else {
-                // TODO handle authentication error
+                // Show popup if authentication failed
+                $ionicPopup.alert({
+                    title: 'Erreur d\'authentification',
+                    template: 'L\'adresse email et le mot de passe ne correspondent pas.'
+                });
             }
         };
 
@@ -23,6 +27,6 @@
     angular.module('whatsapp.controllers')
         .controller('ConnexionCtrl', ConnexionCtrl);
 
-    ConnexionCtrl.$inject = ['$scope', '$rootScope', '$location', 'ContactsSrv'];
+    ConnexionCtrl.$inject = ['$scope', '$rootScope', '$location', 'ContactsSrv', '$ionicPopup'];
 
 })();

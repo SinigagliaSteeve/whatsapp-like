@@ -4,7 +4,6 @@
     // Contacts service
     function ContactsSrv($http, $q, Guid) {
         var contacts;
-        var contactBy;
 
         function loadContacts() {
             if(!contacts) {
@@ -26,9 +25,18 @@
 
         // Retrieves a contact by the value of a property
         this.findBy = function(property, value) {
-            // TODO retrieves contacts (cf Firebase)
             for(var i=0; i < contacts.length; i++) {
                 if(contacts[i][property] === value) {
+                    return contacts[i];
+                }
+            }
+            return null;
+        };
+
+        // Checks authentication of an user
+        this.checkAuthentication = function(email, password) {
+            for(var i=0; i < contacts.length; i++) {
+                if(contacts[i].email === email && contacts[i].password === password) {
                     return contacts[i];
                 }
             }
