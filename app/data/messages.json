@@ -5,14 +5,14 @@
         {
             "_id": "56bda7d2d1f547163701777b",
             "sender": "shieldsroy@cinesanct.com",
-            "message": "Salut à tous, pouvez-vous me confirmer votron s'organise ce présence pour le repas d'équipe ?",
-            "sentDate": "Wed Jan 20 2016 11:06:10 GMT+0100 (CET)"
+            "text": "Salut à tous, pouvez-vous me confirmer votre présence pour qu'on s'organise pour le repas d'équipe ?",
+            "sentDate": "Wed Feb 20 2016 11:06:10 GMT+0100 (CET)"
         },
         {
             "_id": "56bda7d2d1f547163701777b",
             "sender": "sargentmyers@cinesanct.com",
-            "message": "I'm in !",
-            "sentDate": "Wed Jan 20 2016 11:36:10 GMT+0100 (CET)"
+            "text": "I'm in !",
+            "sentDate": "Wed Feb 20 2016 11:36:10 GMT+0100 (CET)"
         }
     ]
   }

@@ -18,42 +18,26 @@
             return -1;
         }
 
-        this.findAll = function() {
+        function loadConversations() {
             if(!conversations) {
                 return $http.get('data/conversations.json').then(function (response) {
                     conversations = response.data;
                     return conversations;
                 }, function (response) {
-                    console.log(`Erreur conversations.json : ${response.status}`);
+                    console.log('Erreur conversations.json : ' + response.status);
                 });
             } else {
                 return $q.resolve(conversations);
             }
+        }
+
+        this.findAll = function() {
+            return loadConversations();
         };
 
         this.findOne = function(id) {
-            console.log(id);
-            $http.get('data/conversations.json').then(function (response) {
-                var conversations = response.data;
-                return conversations[getConversationIndexFromId(conversations, id)];
-
-            }, function (response) {
-                console.log(`Erreur conversations.json : ${response.status}`);
-            });
+            return conversations ? conversations[getConversationIndexFromId(conversations, id)] : null;
         };
-
-        // FIXME move this to MessagesSrv
-        // this.findOne = function(id) {
-        //     $http.get('data/messages.json').then(function (response) {
-        //         var messages = response.data;
-        //         console.log(id);
-        //         console.log(getConversationIndexFromId(messages, id));
-        //         return messages[getConversationIndexFromId(messages, id)];
-        //
-        //     }, function (response) {
-        //         console.log(`Erreur messages.json : ${response.status}`);
-        //     });
-        // };
     }
 
 

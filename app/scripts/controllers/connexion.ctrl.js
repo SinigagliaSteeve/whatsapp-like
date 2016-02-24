@@ -9,7 +9,6 @@
         });
 
         $scope.connexionClick = function(email, password) {
-            // TODO check authentication via password
             $rootScope.user = ContactsSrv.checkAuthentication(email, password);
             if($rootScope.user !== null) {
                 $location.path('/conversations');
