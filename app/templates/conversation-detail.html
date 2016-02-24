@@ -6,34 +6,33 @@
               <div ng-repeat="message in messages" class="message-wrapper"
                   on-hold="onMessageHold($event, $index, message)">
 
-                  <div ng-if="user.email !== message.sender">
+                  <div ng-if="user.firstName !== message.sender">
                       <div class="chat-bubble left">
 
                           <div class="message" ng-bind-html="message.text" autolinker>
                           </div>
 
                           <div class="message-detail">
-                              <span class="bold">{{message.sender}}</span>, <!-- FIXME name instead of email -->
+                              <span class="bold">{{message.sender}}</span>,
                               <span am-time-ago="message.sentDate"></span>
                           </div>
 
                       </div>
                   </div>
 
-                  <div ng-if="user.email === message.sender">
+                  <div ng-if="user.firstName === message.sender">
                       <div class="chat-bubble right">
 
                           <div class="message" ng-bind-html="message.text" autolinker>
                           </div>
 
                           <div class="message-detail">
-                              <span class="bold">{{user.email}}</span>, <!-- FIXME name instead of email -->
+                              <span class="bold">{{user.firstName}}</span>,
                               <span am-time-ago="message.sentDate"></span>
                           </div>
 
                       </div>
                   </div>
-                  <!-- <div class="cf"></div> -->
               </div>
           </ion-content>
 

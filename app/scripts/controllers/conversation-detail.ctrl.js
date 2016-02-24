@@ -5,8 +5,6 @@
         var conversationId = $stateParams.conversationId;
         $scope.conversation = ConversationsSrv.findOne(conversationId);
 
-        // FIXME load all conversations and messages here
-        // TODO filter and get only messages of interest in the global array containing all conv and messages
         ConversationDetailSrv.findAll(conversationId).then(function(messages) {
             $scope.messages = messages;
         });
@@ -14,12 +12,13 @@
         $scope.sendMessage = function(message) {
             var newMessage = {
                 _id: Guid.newGuid(),
-                sender: $rootScope.user.email,
+                sender: $rootScope.user.firstName,
                 text: message,
                 sentDate: new Date()
             };
 
             $scope.messages.push(newMessage);
+            $scope.message = null; // clear the message on the UI
         };
     }
 
