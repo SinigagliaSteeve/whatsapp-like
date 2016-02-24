@@ -11,7 +11,7 @@
                     if(conversationsDetail[i].conversationId === conversationId) {
                         return conversationsDetail[i].messages;
                     }
-                    return null;
+                    return [];
                 }
             }, function (response) {
                 console.log('Erreur messages.json : ' + response.status);

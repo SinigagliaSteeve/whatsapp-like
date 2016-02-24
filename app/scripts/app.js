@@ -68,6 +68,12 @@
             controller: 'InscriptionCtrl'
         })
 
+        .state('newConversation', {
+            url: '/newConversation',
+            templateUrl: 'templates/newConversation.html',
+            controller: 'NewConversationCtrl'
+        })
+
       // Each tab has its own nav history stack:
       .state('tab.contacts', {
           url: '/contacts',
@@ -88,6 +94,7 @@
             }
           }
         })
+
         .state('tab.conversation-detail', {
           url: '/conversations/:conversationId',
           views: {

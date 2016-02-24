@@ -2,7 +2,7 @@
     'use strict';
 
     // Conversations service
-    function ConversationsSrv($http, $q) {
+    function ConversationsSrv($http, $q, Guid) {
         var conversations;
 
         /**
@@ -27,7 +27,9 @@
                     console.log('Erreur conversations.json : ' + response.status);
                 });
             } else {
-                return $q.resolve(conversations);
+                var c = $q.defer();
+                c.resolve(conversations);
+                return c.promise;
             }
         }
 
@@ -38,6 +40,17 @@
         this.findOne = function(id) {
             return conversations ? conversations[getConversationIndexFromId(conversations, id)] : null;
         };
+
+        this.save = function(nom, description) {
+            var newConversation = {
+                _id: Guid.newGuid(),
+                name: nom,
+                description: description,
+                creationDate: new Date()
+            };
+
+            conversations.push(newConversation);
+        };
     }
 
 
@@ -45,5 +58,5 @@
         .service('ConversationsSrv', ConversationsSrv);
 
 
-    ConversationsSrv.$inject = ['$http', '$q'];
+    ConversationsSrv.$inject = ['$http', '$q', 'Guid'];
 })();

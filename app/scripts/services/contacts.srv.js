@@ -6,6 +6,7 @@
         var contacts;
 
         function loadContacts() {
+            console.log(contacts);
             if(!contacts) {
                 return $http.get('data/contacts.json').then(function (response) {
                     contacts = response.data;
@@ -14,7 +15,9 @@
                     console.log('Erreur contacts.json : ' + response.status);
                 });
             } else {
-                return $q.resolve(contacts);
+                var c = $q.defer();
+                c.resolve(contacts);
+                return c.promise;
             }
         }
 

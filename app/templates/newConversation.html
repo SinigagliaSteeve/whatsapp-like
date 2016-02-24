@@ -1,0 +1,22 @@
+<ion-view view-title="Nouvelle conversation">
+    <ion-content>
+
+        <div class="list card">
+            <label class="item item-input">
+                <input ng-model="nom" type="text" name="nom" placeholder="Nom" class="item"/>
+            </label>
+
+            <label class="item item-input">
+                <input ng-model="description" type="text" name="description" placeholder="Description" class="item"/>
+            </label>
+
+        </div>
+
+        <div class="text-center">
+            <button ng-click="creerClick(nom, description)" class="button button-block button-stable">
+              Créer
+            </button>
+        </div>
+
+    </ion-content>
+</ion-view>
