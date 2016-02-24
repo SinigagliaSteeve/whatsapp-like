@@ -48,3 +48,7 @@ grunt serve
 - /app : the application
 - /www : generated application
 - /node_modules
+
+# Credits
+
+Guillaume Pouilloux

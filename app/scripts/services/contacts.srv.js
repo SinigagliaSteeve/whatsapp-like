@@ -6,7 +6,6 @@
         var contacts;
 
         function loadContacts() {
-            console.log(contacts);
             if(!contacts) {
                 return $http.get('data/contacts.json').then(function (response) {
                     contacts = response.data;
