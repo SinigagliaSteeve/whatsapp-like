@@ -6,6 +6,7 @@
         var syncObject = ContactsSrv.findAll();
         syncObject.$bindTo($scope, 'contacts');
 
+        // Handler when inscription button clicked
         $scope.inscriptionClick = function (prenom, nom, email, password) {
             if(prenom && nom && email && password) {
                 $rootScope.user = ContactsSrv.save(prenom, nom, email, password);

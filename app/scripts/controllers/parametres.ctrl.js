@@ -3,6 +3,7 @@
 
     function ParametresCtrl($scope, $rootScope, $location) {
 
+        // Handler when deconnexion button clicked
         $scope.deconnexion = function() {
             $rootScope.user = null;
             $location.path('/connexion');

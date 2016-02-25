@@ -4,6 +4,7 @@
     // Conversation detail service
     function ConversationDetailSrv($q, FIREBASE_URL, $firebaseObject) {
 
+        // Finds all conversations
         this.findAll = function (conversationId) {
             var ref = new Firebase(FIREBASE_URL + 'messages/' + conversationId);
             return $firebaseObject(ref);

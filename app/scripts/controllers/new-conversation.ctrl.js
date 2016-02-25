@@ -6,6 +6,7 @@
         var syncObject = ConversationsSrv.findAll();
         syncObject.$bindTo($scope, 'conversations');
 
+        // Handler when creer button clicked
         $scope.creerClick = function(nom, description) {
             var conversation = ConversationsSrv.save(nom, description);
 

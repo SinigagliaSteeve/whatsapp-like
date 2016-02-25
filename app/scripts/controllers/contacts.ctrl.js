@@ -3,6 +3,7 @@
 
     function ContactsCtrl($scope, ContactsSrv) {
 
+        // Custom watcher to convert an object to an array
         function contactsWatcher() {
             var contacts = $scope.contacts;
             var contactsArray = [];
@@ -16,6 +17,7 @@
 
         $scope.model = {};
 
+        // Init the model
         $scope.init = function () {
             var syncObject = ContactsSrv.findAll();
             syncObject.$bindTo($scope, 'contacts');

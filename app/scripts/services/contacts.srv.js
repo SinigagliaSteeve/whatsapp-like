@@ -34,6 +34,7 @@
             return deferred.promise;
         };
 
+        // Saves a contact
         this.save = function (prenom, nom, email, password) {
             var newContact = {
                 _id: Guid.newGuid(),

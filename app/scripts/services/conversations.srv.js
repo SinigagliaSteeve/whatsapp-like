@@ -4,12 +4,13 @@
     // Conversations service
     function ConversationsSrv($q, Guid, FIREBASE_URL, $firebaseObject) {
 
-        // Retrieves all contacts
+        // Retrieves all conversations
         this.findAll = function () {
             var ref = new Firebase(FIREBASE_URL + 'conversations/');
             return $firebaseObject(ref);
         };
 
+        // Find one conversation
         this.findOne = function(id) {
             var deferred = $q.defer();
             new Firebase(FIREBASE_URL + 'conversations/' + id)
@@ -23,6 +24,7 @@
             return deferred.promise;
         };
 
+        // Saves a conversation
         this.save = function(nom, description) {
             var newConversation = {
                 _id: Guid.newGuid(),

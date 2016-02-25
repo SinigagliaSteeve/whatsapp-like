@@ -3,6 +3,7 @@
 
     function ConnexionCtrl($scope, $rootScope, $location, ContactsSrv, $ionicPopup) {
 
+        // Handler when connexion button clicked
         $scope.connexionClick = function (email, password) {
             ContactsSrv.checkAuthentication(email, password).then(function (user) {
                 $rootScope.user = user;

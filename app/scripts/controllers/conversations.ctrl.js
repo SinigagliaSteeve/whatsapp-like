@@ -3,6 +3,7 @@
 
     function ConversationsCtrl($scope, ConversationsSrv) {
 
+        // Custom watcher to convert an object to an array
         function conversationsWatcher() {
             var conversations = $scope.conversations;
             var conversationsArray = [];
