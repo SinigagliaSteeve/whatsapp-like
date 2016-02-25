@@ -1,10 +1,9 @@
 <ion-view cache-view="false" view-title="{{conversation.name}}">
 
   <ion-content has-bouncing="true" class="has-header has-footer"
-      delegate-handle="userMessageScroll">
+      delegate-handle="userMessageScroll" ng-init="init()">
 
-      <div ng-repeat="message in messages" class="message-wrapper"
-          on-hold="onMessageHold($event, $index, message)">
+      <div ng-repeat="message in messagesArray | orderBy: sentDateOrder" class="message-wrapper">
 
           <div ng-if="user.firstName !== message.sender">
               <div class="chat-bubble left">

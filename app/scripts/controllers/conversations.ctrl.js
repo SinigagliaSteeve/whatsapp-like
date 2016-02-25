@@ -14,11 +14,12 @@
            $scope.conversationsArray = conversationsArray;
         }
 
-        var syncObject = ConversationsSrv.findAll();
-        syncObject.$bindTo($scope, 'conversations');
+        $scope.init = function () {
+            var syncObject = ConversationsSrv.findAll();
+            syncObject.$bindTo($scope, 'conversations');
+        }
 
         $scope.$watch($scope.conversations, conversationsWatcher);
-
     }
 
     angular.module('whatsapp.controllers')

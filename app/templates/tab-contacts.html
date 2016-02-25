@@ -6,7 +6,7 @@
       </label>
   </ion-header-bar>
 
-  <ion-content>
+  <ion-content ng-init="init()">
       <ion-list class="has-header">
         <ion-item class="item-remove-animate item-icon-right"
             ng-repeat="contact in contactsArray | orderBy: 'firstName' | filter:searchContact"

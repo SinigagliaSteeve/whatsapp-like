@@ -16,8 +16,10 @@
 
         $scope.model = {};
 
-        var syncObject = ContactsSrv.findAll();
-        syncObject.$bindTo($scope, 'contacts');
+        $scope.init = function () {
+            var syncObject = ContactsSrv.findAll();
+            syncObject.$bindTo($scope, 'contacts');
+        }
 
         // Custom filter which matches firstName and lastName based on the query provided
         $scope.searchContact = function (contact) {
@@ -28,7 +30,7 @@
                 return true;
             }
         };
-        
+
         $scope.$watch($scope.contacts, contactsWatcher);
     }
 

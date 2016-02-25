@@ -2,25 +2,16 @@
     'use strict';
 
     // Conversation detail service
-    function ConversationDetailSrv($q, FIREBASE_URL, $firebaseArray) {
+    function ConversationDetailSrv($q, FIREBASE_URL, $firebaseObject) {
 
-        // Returns the first property of an object
-        function first(obj) {
-            for (var a in obj) {
-                return obj[a];
-            }
-        }
-
-        this.findAll = function(conversationId) {
-            var ref = new Firebase(FIREBASE_URL + 'messages/')
-                .orderByChild('conversationId')
-                .equalTo(conversationId);
-            return $firebaseArray(ref);
+        this.findAll = function (conversationId) {
+            var ref = new Firebase(FIREBASE_URL + 'messages/' + conversationId);
+            return $firebaseObject(ref);
         };
     }
 
     angular.module('whatsapp.services')
         .service('ConversationDetailSrv', ConversationDetailSrv);
 
-    ConversationDetailSrv.$inject = ['$q', 'FIREBASE_URL', '$firebaseArray'];
+    ConversationDetailSrv.$inject = ['$q', 'FIREBASE_URL', '$firebaseObject'];
 })();

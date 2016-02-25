@@ -4,13 +4,6 @@
     // Conversations service
     function ConversationsSrv($q, Guid, FIREBASE_URL, $firebaseObject) {
 
-        // Returns the first property of an object
-        function first(obj) {
-            for (var a in obj) {
-                return obj[a];
-            }
-        }
-
         // Retrieves all contacts
         this.findAll = function () {
             var ref = new Firebase(FIREBASE_URL + 'conversations/');
@@ -19,12 +12,10 @@
 
         this.findOne = function(id) {
             var deferred = $q.defer();
-            new Firebase(FIREBASE_URL + 'conversations/')
-                .orderByChild('_id')
-                .equalTo(id)
+            new Firebase(FIREBASE_URL + 'conversations/' + id)
                 .once('value', function (snap) {
-                    if (snap.exists()) {
-                        deferred.resolve(first(snap.val()));
+                    if(snap.exists()) {
+                        deferred.resolve(snap.val());
                     } else {
                         deferred.reject('Conversation with id ' + id + ' not found');
                     }
