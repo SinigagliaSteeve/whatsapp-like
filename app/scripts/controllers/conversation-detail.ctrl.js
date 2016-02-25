@@ -3,10 +3,13 @@
 
     function ConversationDetailCtrl($scope, $stateParams, ConversationsSrv, ConversationDetailSrv, Guid, $rootScope) {
         var conversationId = $stateParams.conversationId;
-        $scope.conversation = ConversationsSrv.findOne(conversationId);
 
-        ConversationDetailSrv.findAll(conversationId).then(function(messages) {
-            $scope.messages = messages;
+        ConversationsSrv.findOne(conversationId).then(function (conversation) {
+            $scope.conversation = conversation;
+
+            ConversationDetailSrv.findAll(conversationId).then(function(messages) {
+                $scope.messages = messages;
+            });
         });
 
         $scope.sendMessage = function(message) {

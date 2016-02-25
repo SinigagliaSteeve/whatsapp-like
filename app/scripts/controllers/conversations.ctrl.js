@@ -1,15 +1,13 @@
 (function () {
     'use strict';
 
-    function ConversationsCtrl($scope, ConversationsSrv) {
-        ConversationsSrv.findAll().then(function (conversations) {
-            $scope.conversations = conversations;
-        });
+    function ConversationsCtrl($rootScope, ConversationsSrv) {
+        $rootScope.conversations = ConversationsSrv.findAll();
     }
 
     angular.module('whatsapp.controllers')
         .controller('ConversationsCtrl', ConversationsCtrl);
 
-    ConversationsCtrl.$inject = ['$scope', 'ConversationsSrv'];
+    ConversationsCtrl.$inject = ['$rootScope', 'ConversationsSrv'];
 
 })();

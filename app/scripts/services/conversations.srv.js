@@ -2,43 +2,34 @@
     'use strict';
 
     // Conversations service
-    function ConversationsSrv($http, $q, Guid) {
-        var conversations;
+    function ConversationsSrv($q, Guid, FIREBASE_URL, $firebaseArray) {
 
-        /**
-         * Get an entity by its id
-         * @return the id if the entity exists, otherwise -1
-         */
-        function getConversationIndexFromId(conversations, id) {
-            for (var i = 0; i < conversations.length; i++) {
-                if(conversations[i]._id === id) {
-                    return i;
-                }
-            }
-            return -1;
-        }
-
-        function loadConversations() {
-            if(!conversations) {
-                return $http.get('data/conversations.json').then(function (response) {
-                    conversations = response.data;
-                    return conversations;
-                }, function (response) {
-                    console.log('Erreur conversations.json : ' + response.status);
-                });
-            } else {
-                var c = $q.defer();
-                c.resolve(conversations);
-                return c.promise;
+        // Returns the first property of an object
+        function first(obj) {
+            for (var a in obj) {
+                return obj[a];
             }
         }
 
-        this.findAll = function() {
-            return loadConversations();
+        // Retrieves all contacts
+        this.findAll = function () {
+            var ref = new Firebase(FIREBASE_URL + 'conversations/');
+            return $firebaseArray(ref);
         };
 
         this.findOne = function(id) {
-            return conversations ? conversations[getConversationIndexFromId(conversations, id)] : null;
+            var deferred = $q.defer();
+            new Firebase(FIREBASE_URL + 'conversations/')
+                .orderByChild('_id')
+                .equalTo(id)
+                .once('value', function (snap) {
+                    if (snap.exists()) {
+                        deferred.resolve(first(snap.val()));
+                    } else {
+                        deferred.reject('Conversation with id ' + id + ' not found');
+                    }
+                });
+            return deferred.promise;
         };
 
         this.save = function(nom, description) {
@@ -48,8 +39,7 @@
                 description: description,
                 creationDate: new Date()
             };
-
-            conversations.push(newConversation);
+            return newConversation;
         };
     }
 
@@ -58,5 +48,5 @@
         .service('ConversationsSrv', ConversationsSrv);
 
 
-    ConversationsSrv.$inject = ['$http', '$q', 'Guid'];
+    ConversationsSrv.$inject = ['$q', 'Guid', 'FIREBASE_URL', '$firebaseArray'];
 })();
