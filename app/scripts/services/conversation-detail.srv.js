@@ -2,29 +2,25 @@
     'use strict';
 
     // Conversation detail service
-    function ConversationDetailSrv($http) {
+    function ConversationDetailSrv($q, FIREBASE_URL, $firebaseArray) {
 
-        function loadMessages(conversationId) {
-            return $http.get('data/messages.json').then(function (response) {
-                var conversationsDetail = response.data;
-                for(var i=0; i<conversationsDetail.length; i++) {
-                    if(conversationsDetail[i].conversationId === conversationId) {
-                        return conversationsDetail[i].messages;
-                    }
-                    return [];
-                }
-            }, function (response) {
-                console.log('Erreur messages.json : ' + response.status);
-            });
+        // Returns the first property of an object
+        function first(obj) {
+            for (var a in obj) {
+                return obj[a];
+            }
         }
 
         this.findAll = function(conversationId) {
-            return loadMessages(conversationId);
+            var ref = new Firebase(FIREBASE_URL + 'messages/')
+                .orderByChild('conversationId')
+                .equalTo(conversationId);
+            return $firebaseArray(ref);
         };
     }
 
     angular.module('whatsapp.services')
         .service('ConversationDetailSrv', ConversationDetailSrv);
 
-    ConversationDetailSrv.$inject = ['$http'];
+    ConversationDetailSrv.$inject = ['$q', 'FIREBASE_URL', '$firebaseArray'];
 })();

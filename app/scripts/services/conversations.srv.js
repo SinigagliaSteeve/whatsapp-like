@@ -2,7 +2,7 @@
     'use strict';
 
     // Conversations service
-    function ConversationsSrv($q, Guid, FIREBASE_URL, $firebaseArray) {
+    function ConversationsSrv($q, Guid, FIREBASE_URL, $firebaseObject) {
 
         // Returns the first property of an object
         function first(obj) {
@@ -14,7 +14,7 @@
         // Retrieves all contacts
         this.findAll = function () {
             var ref = new Firebase(FIREBASE_URL + 'conversations/');
-            return $firebaseArray(ref);
+            return $firebaseObject(ref);
         };
 
         this.findOne = function(id) {
@@ -37,7 +37,7 @@
                 _id: Guid.newGuid(),
                 name: nom,
                 description: description,
-                creationDate: new Date()
+                creationDate: new Date().toString()
             };
             return newConversation;
         };
@@ -48,5 +48,5 @@
         .service('ConversationsSrv', ConversationsSrv);
 
 
-    ConversationsSrv.$inject = ['$q', 'Guid', 'FIREBASE_URL', '$firebaseArray'];
+    ConversationsSrv.$inject = ['$q', 'Guid', 'FIREBASE_URL', '$firebaseObject'];
 })();

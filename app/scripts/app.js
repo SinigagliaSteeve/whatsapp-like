@@ -2,7 +2,8 @@
     'use strict';
 
 
-    angular.module('whatsapp', ['ionic', 'ngGuid', 'angularMoment', 'firebase', 'whatsapp.controllers', 'whatsapp.services', 'whatsapp.config'])
+    angular.module('whatsapp', ['ionic', 'ngGuid', 'angularMoment', 'firebase',
+        'whatsapp.controllers', 'whatsapp.services', 'whatsapp.config'])
 
     .run(function($ionicPlatform, $rootScope, $location, $state) {
       $rootScope.user = null;
@@ -31,12 +32,6 @@
                 $state.go('connexion');
             }
         });
-
-        // FIXME test firebase
-        // new Firebase('https://whatsapp-like-gpo.firebaseio.com/contacts/0').once('value', function(snap) {
-        //    console.log('I fetched a contact!', snap.val());
-        // });
-
       });
     })
 

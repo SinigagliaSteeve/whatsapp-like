@@ -1,12 +1,25 @@
 (function () {
     'use strict';
 
-    function ContactsCtrl($scope, $rootScope, ContactsSrv) {
+    function ContactsCtrl($scope, ContactsSrv) {
+
+        function contactsWatcher() {
+            var contacts = $scope.contacts;
+            var contactsArray = [];
+            for (var key in contacts) {
+                if(key !== '$id' && key !== '$priority') {
+                    contactsArray.push(contacts[key]);
+                }
+           }
+           $scope.contactsArray = contactsArray;
+        }
+
         $scope.model = {};
 
-        $rootScope.contacts = ContactsSrv.findAll();
+        var syncObject = ContactsSrv.findAll();
+        syncObject.$bindTo($scope, 'contacts');
 
-        // Custom filter which matches firstName and lastName based on the query
+        // Custom filter which matches firstName and lastName based on the query provided
         $scope.searchContact = function (contact) {
             if($scope.model.queryContact !== undefined) {
                 var query = $scope.model.queryContact.toLowerCase();
@@ -15,11 +28,13 @@
                 return true;
             }
         };
+        
+        $scope.$watch($scope.contacts, contactsWatcher);
     }
 
     angular.module('whatsapp.controllers')
         .controller('ContactsCtrl', ContactsCtrl);
 
-    ContactsCtrl.$inject = ['$scope', '$rootScope', 'ContactsSrv'];
+    ContactsCtrl.$inject = ['$scope', 'ContactsSrv'];
 
 })();

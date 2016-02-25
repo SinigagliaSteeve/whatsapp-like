@@ -7,9 +7,7 @@
         ConversationsSrv.findOne(conversationId).then(function (conversation) {
             $scope.conversation = conversation;
 
-            ConversationDetailSrv.findAll(conversationId).then(function(messages) {
-                $scope.messages = messages;
-            });
+            $scope.messages = ConversationDetailSrv.findAll(conversationId);
         });
 
         $scope.sendMessage = function(message) {

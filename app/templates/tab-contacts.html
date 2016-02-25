@@ -9,7 +9,7 @@
   <ion-content>
       <ion-list class="has-header">
         <ion-item class="item-remove-animate item-icon-right"
-            ng-repeat="contact in contacts | orderBy: 'firstName' | filter:searchContact"
+            ng-repeat="contact in contactsArray | orderBy: 'firstName' | filter:searchContact"
             type="item-text-wrap">
           <h2>{{contact.firstName}} {{contact.lastName}}</h2>
         </ion-item>
