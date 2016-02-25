@@ -44,8 +44,10 @@
             };
 
             // save a new message
-            syncMessages[newMessage._id] = newMessage;
-            syncMessages.$save();
+            // syncMessages[newMessage._id] = newMessage;
+            // syncMessages.$save();
+            $scope.messages[newMessage._id] = newMessage;
+            $scope.messagesArray.push(newMessage); // little hack :-)
 
             $scope.message = null; // clear the message on the UI
         };

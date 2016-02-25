@@ -18,7 +18,7 @@
         $scope.init = function () {
             var syncObject = ConversationsSrv.findAll();
             syncObject.$bindTo($scope, 'conversations');
-        }
+        };
 
         $scope.$watch($scope.conversations, conversationsWatcher);
     }
