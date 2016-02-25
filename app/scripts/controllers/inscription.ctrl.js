@@ -3,7 +3,7 @@
 
     function InscriptionCtrl($scope, $rootScope, $location, ContactsSrv, $ionicPopup) {
 
-        $scope.inscriptionClick = function(prenom, nom, email, password) {
+        $scope.inscriptionClick = function (prenom, nom, email, password) {
             if(prenom && nom && email && password) {
                 $rootScope.user = ContactsSrv.save(prenom, nom, email, password);
                 $rootScope.contacts.$add($rootScope.user);
