@@ -1,7 +1,7 @@
-"use strict";
+(function () {
+    'use strict';
 
- angular.module('config', [])
+     angular.module('whatsapp.config', [])
+        .constant('FIREBASE_URL', 'https://whatsapp-like-gpo.firebaseio.com/');
 
-.constant('ENV', {name:'development',apiEndpoint:'http://dev.yoursite.com:10000/'})
-
-;
+})();

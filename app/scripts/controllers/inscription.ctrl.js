@@ -3,13 +3,10 @@
 
     function InscriptionCtrl($scope, $rootScope, $location, ContactsSrv, $ionicPopup) {
 
-        ContactsSrv.findAll().then(function (contacts) {
-            $scope.contacts = contacts;
-        });
-
         $scope.inscriptionClick = function(prenom, nom, email, password) {
             if(prenom && nom && email && password) {
                 $rootScope.user = ContactsSrv.save(prenom, nom, email, password);
+                $rootScope.contacts.$add($rootScope.user);
                 $location.path('/conversations');
             } else {
                 // Show popup if signin is not complete

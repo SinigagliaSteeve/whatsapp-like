@@ -1,12 +1,10 @@
 (function () {
     'use strict';
 
-    function ContactsCtrl($scope, ContactsSrv) {
+    function ContactsCtrl($scope, $rootScope, ContactsSrv) {
         $scope.model = {};
 
-        ContactsSrv.findAll().then(function (contacts) {
-            $scope.contacts = contacts;
-        });
+        $rootScope.contacts = ContactsSrv.findAll();
 
         // Custom filter which matches firstName and lastName based on the query
         $scope.searchContact = function(contact) {
@@ -22,6 +20,6 @@
     angular.module('whatsapp.controllers')
         .controller('ContactsCtrl', ContactsCtrl);
 
-    ContactsCtrl.$inject = ['$scope', 'ContactsSrv'];
+    ContactsCtrl.$inject = ['$scope', '$rootScope', 'ContactsSrv'];
 
 })();

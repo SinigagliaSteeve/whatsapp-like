@@ -3,22 +3,16 @@
 
     function ConnexionCtrl($scope, $rootScope, $location, ContactsSrv, $ionicPopup) {
 
-        // Initialize contacts
-        ContactsSrv.findAll().then(function (contacts) {
-            $scope.contacts = contacts;
-        });
-
-        $scope.connexionClick = function(email, password) {
-            $rootScope.user = ContactsSrv.checkAuthentication(email, password);
-            if($rootScope.user !== null) {
+        $scope.connexionClick = function (email, password) {
+            ContactsSrv.checkAuthentication(email, password).then(function (user) {
+                $rootScope.user = user;
                 $location.path('/conversations');
-            } else {
-                // Show popup if authentication failed
+            }).catch(function () {
                 $ionicPopup.alert({
                     title: 'Erreur d\'authentification',
                     template: 'L\'adresse email et le mot de passe ne correspondent pas.'
                 });
-            }
+            });
         };
 
     }

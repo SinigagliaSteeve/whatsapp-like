@@ -2,50 +2,39 @@
     'use strict';
 
     // Contacts service
-    function ContactsSrv($http, $q, Guid) {
-        var contacts;
+    function ContactsSrv($http, $q, Guid, FIREBASE_URL, $firebaseArray) {
 
-        function loadContacts() {
-            if(!contacts) {
-                return $http.get('data/contacts.json').then(function (response) {
-                    contacts = response.data;
-                    return contacts;
-                }, function (response) {
-                    console.log('Erreur contacts.json : ' + response.status);
-                });
-            } else {
-                var c = $q.defer();
-                c.resolve(contacts);
-                return c.promise;
+        // Retrieves all contacts
+        this.findAll = function () {
+            var ref = new Firebase(FIREBASE_URL + 'contacts/');
+            return $firebaseArray(ref);
+        };
+
+        // Returns the first property of an object
+        function first(obj) {
+            for (var a in obj) {
+                return obj[a];
             }
         }
 
-        // Retrieves all contacts
-        this.findAll = function() {
-            return loadContacts();
-        };
-
-        // Retrieves a contact by the value of a property
-        this.findBy = function(property, value) {
-            for(var i=0; i < contacts.length; i++) {
-                if(contacts[i][property] === value) {
-                    return contacts[i];
-                }
-            }
-            return null;
-        };
-
         // Checks authentication of an user
-        this.checkAuthentication = function(email, password) {
-            for(var i=0; i < contacts.length; i++) {
-                if(contacts[i].email === email && contacts[i].password === password) {
-                    return contacts[i];
-                }
-            }
-            return null;
+        this.checkAuthentication = function (email, password) {
+            var deferred = $q.defer();
+            new Firebase(FIREBASE_URL + '/contacts')
+                .orderByChild('email')
+                .equalTo(email)
+                .once('value', function (snap) {
+                    var user = snap.val();
+                    if(user && first(user).password === password) {
+                        deferred.resolve(first(user));
+                    } else {
+                        deferred.reject('Authentication failed');
+                    }
+                });
+            return deferred.promise;
         };
 
-        this.save = function(prenom, nom, email, password) {
+        this.save = function (prenom, nom, email, password) {
             var newContact = {
                 _id: Guid.newGuid(),
                 firstName: prenom,
@@ -54,18 +43,13 @@
                 password: password
             };
 
-            contacts.push(newContact);
-
-            // TODO push newContact (cf Firebase)
-
             return newContact;
-
         };
     }
 
     angular.module('whatsapp.services')
         .service('ContactsSrv', ContactsSrv);
 
-    ContactsSrv.$inject = ['$http', '$q', 'Guid'];
+    ContactsSrv.$inject = ['$http', '$q', 'Guid', 'FIREBASE_URL', '$firebaseArray'];
 
 })();

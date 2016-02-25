@@ -2,7 +2,7 @@
     'use strict';
 
 
-    angular.module('whatsapp', ['ionic', 'ngGuid', 'angularMoment', 'firebase', 'whatsapp.controllers', 'whatsapp.services'])
+    angular.module('whatsapp', ['ionic', 'ngGuid', 'angularMoment', 'firebase', 'whatsapp.controllers', 'whatsapp.services', 'whatsapp.config'])
 
     .run(function($ionicPlatform, $rootScope, $location, $state) {
       $rootScope.user = null;

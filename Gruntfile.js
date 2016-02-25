@@ -28,34 +28,34 @@ module.exports = function (grunt) {
       dist: 'www'
     },
 
-    // Environment Variables for Angular App
-    // This creates an Angular Module that can be injected via ENV
-    // Add any desired constants to the ENV objects below.
-    // https://github.com/diegonetto/generator-ionic/blob/master/docs/FAQ.md#how-do-i-add-constants
-    ngconstant: {
-      options: {
-        space: '  ',
-        wrap: '"use strict";\n\n {%= __ngModule %}',
-        name: 'config',
-        dest: '<%= yeoman.app %>/<%= yeoman.scripts %>/configuration.js'
-      },
-      development: {
-        constants: {
-          ENV: {
-            name: 'development',
-            apiEndpoint: 'http://dev.yoursite.com:10000/'
-          }
-        }
-      },
-      production: {
-        constants: {
-          ENV: {
-            name: 'production',
-            apiEndpoint: 'http://api.yoursite.com/'
-          }
-        }
-      }
-    },
+    // // Environment Variables for Angular App
+    // // This creates an Angular Module that can be injected via ENV
+    // // Add any desired constants to the ENV objects below.
+    // // https://github.com/diegonetto/generator-ionic/blob/master/docs/FAQ.md#how-do-i-add-constants
+    // ngconstant: {
+    //   options: {
+    //     space: '  ',
+    //     wrap: '"use strict";\n\n {%= __ngModule %}',
+    //     name: 'config',
+    //     dest: '<%= yeoman.app %>/<%= yeoman.scripts %>/configuration.js'
+    //   },
+    //   development: {
+    //     constants: {
+    //       ENV: {
+    //         name: 'development',
+    //         apiEndpoint: 'http://dev.yoursite.com:10000/'
+    //       }
+    //     }
+    //   },
+    //   production: {
+    //     constants: {
+    //       ENV: {
+    //         name: 'production',
+    //         apiEndpoint: 'http://api.yoursite.com/'
+    //       }
+    //     }
+    //   }
+    // },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -77,7 +77,7 @@ module.exports = function (grunt) {
       },
       gruntfile: {
         files: ['Gruntfile.js'],
-        tasks: ['ngconstant:development', 'newer:copy:app']
+        tasks: ['newer:copy:app']
       }
     },
 
@@ -157,7 +157,7 @@ module.exports = function (grunt) {
       }
     },
 
-    
+
 
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
@@ -488,7 +488,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('init', [
     'clean',
-    'ngconstant:development',
     'wiredep',
     'concurrent:server',
     'autoprefixer',
@@ -499,7 +498,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('compress', [
     'clean',
-    'ngconstant:production',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -513,7 +511,7 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('coverage', 
+  grunt.registerTask('coverage',
     ['karma:continuous',
     'connect:coverage:keepalive'
   ]);
